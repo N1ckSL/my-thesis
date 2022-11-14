@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	body {
+		@apply text-base text-primary-800 bg-[#F8F9FA];
+		font-family: 'Untitled', sans-serif;
+	}
+
+	html,
+	body {
+		@apply m-0 p-0 h-full;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-medium;
+	}
+
+	h1 {
+		@apply text-3xl;
+	}
+
+	h2 {
+		@apply text-2xl;
+	}
+
+	h3 {
+		@apply text-xl;
+	}
+
+	h4 {
+		@apply text-lg;
+	}
+
+	.page-wrapper {
+		@apply mx-auto max-w-5xl w-[95%] py-4;
+	}
+
+	.container {
+		@apply mx-auto max-w-5xl w-[95%];
+	}
+
+	.card {
+		@apply bg-white rounded-md p-4 border border-primary-500;
+	}
+
+	.btn {
+		@apply h-10 flex px-4 rounded-sm items-center justify-center gap-2;
+	}
+
+	.btn-small {
+		@apply h-8 px-2 text-sm;
+	}
+
+	.btn-primary {
+		@apply bg-secondary-600 text-white transition-colors hover:bg-secondary-700;
+	}
+
+	.btn-primary-alt {
+		@apply text-secondary-600 transition-colors hover:bg-secondary-200 hover:text-secondary-700;
+	}
+
+	.btn-secondary {
+		@apply bg-white border border-secondary-600 transition-colors hover:bg-secondary-100;
+	}
+
+	.btn-secondary-alt {
+		@apply text-white bg-transparent border border-white transition-colors hover:bg-secondary-100/10;
+	}
+
+	.btn.btn-danger {
+		@apply bg-white border border-warning-600 transition-colors hover:bg-warning-500;
+	}
+
+	.btn:disabled {
+		@apply text-disabled-700 bg-disabled-500 cursor-not-allowed hover:bg-disabled-500 border-disabled-700;
+	}
+
+	.input {
+		@apply h-10 bg-white border border-primary-400 rounded-sm placeholder:text-primary-600 text-base pl-3 w-full text-primary-800 disabled:bg-disabled-500 disabled:text-disabled-700;
+	}
+
+	.input-error {
+		@apply border-warning-600;
+	}
+
+	.textarea {
+		@apply min-h-md resize-none pt-3;
+	}
+
+	.label {
+		@apply block text-primary-700 children:mt-[.5px] text-sm;
+	}
+}
