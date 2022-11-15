@@ -91,3 +91,42 @@ l-24 77 -84 0 c-48 0 -85 -4 -85 -10z"
     </svg>
   );
 };
+
+export const MenuLogo = ({ className }: { className?: string }) => {
+  return (
+    <svg
+      width="80"
+      height="80"
+      viewBox="0 0 80 80"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <circle cx="40" cy="40" r="40" fill="#662EDC" />
+      <line
+        x1="20"
+        y1="25.5"
+        x2="60"
+        y2="25.5"
+        stroke="white"
+        strokeWidth="3"
+      />
+      <line
+        x1="20"
+        y1="40.5"
+        x2="50"
+        y2="40.5"
+        stroke="white"
+        strokeWidth="3"
+      />
+      <line
+        x1="20"
+        y1="55.5"
+        x2="40"
+        y2="55.5"
+        stroke="white"
+        strokeWidth="3"
+      />
+    </svg>
+  );
+};
