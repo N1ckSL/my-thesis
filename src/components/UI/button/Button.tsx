@@ -15,7 +15,9 @@ function Button({ children, ...props }: BaseProps) {
   return (
     <button
       {...props}
-      className={`btn relative ${props.className || "btn-primary"}`}
+      className={`btn relative md:w-96 w-64 ${
+        props.className || "btn-primary"
+      }`}
       disabled={props.disabled === true ? true : false}
     >
       <span className={`flex items-center gap-2 justify-center flex-1`}>
