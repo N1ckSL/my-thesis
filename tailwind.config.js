@@ -85,8 +85,8 @@ module.exports = {
         select: "right .8rem bottom 50%",
       },
       backgroundImage: {
-        logo: "url('/img/logo.svg')",
-        hero: "url('/img/hero.png')",
+        login: "url('/src/static/login.svg')",
+        listing: "url('/src/static/listing.png')",
         "hero-footer": "url('/img/footer.png')",
         "main-gradient":
           "linear-gradient(180deg, #0C0F1F, #0C0F1F, #0C0F1F, #0C0F1F, #0C0F1F,#0C0F1F, #052141, #052141, #052141, #0C0F1F, #0C0F1F, #0C0F1F,  #0C0F1F,  #0C0F1F, #0C0F1F, #0C0F1F)",
@@ -110,9 +110,28 @@ module.exports = {
             transform: "translateY(0)",
           },
         },
+        "menu-mobile-in": {
+          "0%": {
+            transform: "translateX(5rem)",
+          },
+          "100%": {
+            transform: "translateX(0)",
+          },
+        },
+        "menu-mobile-out": {
+          "0%": {
+            transform: "translateX(0)",
+          },
+          "100%": {
+            transform: "translateX(5rem)",
+          },
+        },
       },
+
       animation: {
         "fade-in": "fade-in .5s ease-in-out",
+        "menu-mobile-in": "menu-mobile-in .5s ease-in-out",
+        "menu-mobile-out": "menu-mobile-out .5s ease-in-out",
       },
     },
     screens: {
