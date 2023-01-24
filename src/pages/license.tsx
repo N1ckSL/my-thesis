@@ -1,6 +1,9 @@
+import { Header } from "../components/header";
+
 function Licence() {
   return (
     <>
+      <Header />
       <h2>Licence</h2>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum magnam

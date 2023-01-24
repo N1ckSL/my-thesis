@@ -1,6 +1,9 @@
+import { Header } from "../components/header";
+
 function Account() {
   return (
     <>
+      <Header />
       <h2>Account</h2>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum magnam
