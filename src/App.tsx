@@ -6,6 +6,7 @@ import { Landing } from "./pages/Landing";
 import { Account } from "./pages/Account";
 import { Licence } from "./pages/License";
 import { Login } from "./pages/Login";
+import { Register } from "./pages/Register";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route path="/account" element={<Account />} />
       <Route path="/licence" element={<Licence />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
       <Route path="*" element={<NoMatch />} />
     </Routes>
   );
