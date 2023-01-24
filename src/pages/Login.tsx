@@ -11,9 +11,9 @@ import Typewriter from "typewriter-effect";
 function Login() {
   return (
     <>
-      <div className="container mx-auto md:flex items-center justify-center h-screen">
+      <div className="container mx-auto md:flex items-center justify-center h-screen bg-[#FCFDFD]">
         <div className="md:block flex flex-wrap flex-col items-center md:mb-0 mb-8">
-          <Link to="/" className="flex items-center justify-center py-10">
+          <Link to="/" className="flex items-center justify-center my-10">
             <ThesisLogo />
           </Link>
           <div className="text-xl font-bold relative">
@@ -44,14 +44,22 @@ function Login() {
             <form action="post">
               <div className="container mx-auto">
                 <div className="container mx-auto boreder rounded-sm flex flex-col gap-8 items-center justify-center">
-                  <EmailInputWithLabel className="" />
-                  <PasswordInputWithLabel className="" />
+                  <EmailInputWithLabel />
+                  <PasswordInputWithLabel />
                 </div>
                 <div className="flex justify-center w-full mt-10">
                   <ButtonWithProps className="bg-[#6C63FF] text-white">
                     Login
                   </ButtonWithProps>
                 </div>
+                <p className="flex justify-center mt-4">
+                  Don't have an account?{" "}
+                  <span>
+                    <Link to="/register" className="text-[#6C63FF] ml-2">
+                      Register
+                    </Link>
+                  </span>
+                </p>
               </div>
             </form>
           </div>
