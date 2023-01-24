@@ -36,12 +36,12 @@ export const EmailInputWithLabel = ({ className }: { className?: string }) => {
           type="search"
           id="email"
           required
-          className="w-full h-12 px-4 pl-16 text-sm peer rounded-sm bg-[#DBDBDB] outline-none"
+          className="w-full h-12 px-4 pl-16 text-sm peer group-focus-within:border group-focus-within:border-[#6C63FF] rounded-sm bg-[#DBDBDB] outline-none"
         />
 
         <label
           htmlFor="email"
-          className="transform transition-all absolute top-[-0.5rem] left-14 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:left-0 group-focus-within:top-0 peer-valid:text-xs peer-valid:left-0 group-focus-within:h-1/2 peer-valid:h-1/2 group-focus-within:-translate-y-full peer-valid:-translate-y-full group-focus-within:pl-0 peer-valid:pl-0"
+          className="transform transition-all absolute top-0 left-14 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:left-0 group-focus-within:top-0 peer-valid:text-xs peer-valid:left-0 group-focus-within:h-1/2 peer-valid:h-1/2 group-focus-within:-translate-y-full peer-valid:-translate-y-full group-focus-within:pl-0 peer-valid:pl-0"
         >
           Email
         </label>
@@ -82,12 +82,12 @@ export const PasswordInputWithLabel = ({
           required
           value={passwordInput}
           onChange={handlePasswordChange}
-          className="w-full h-12 px-4 pl-16 text-sm peer rounded-sm bg-[#DBDBDB] outline-none"
+          className="w-full h-12 px-4 pl-16 text-sm peer rounded-sm group-focus-within:border group-focus-within:border-[#6C63FF] bg-[#DBDBDB] outline-none"
         />
 
         <label
           htmlFor="password"
-          className="transform transition-all absolute top-[-0.5rem] left-14 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:left-0 group-focus-within:top-0 peer-valid:text-xs peer-valid:left-0 group-focus-within:h-1/2 peer-valid:h-1/2 group-focus-within:-translate-y-full peer-valid:-translate-y-full group-focus-within:pl-0 peer-valid:pl-0"
+          className="transform transition-all absolute top-0 left-14 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:left-0 group-focus-within:top-0 peer-valid:text-xs peer-valid:left-0 group-focus-within:h-1/2 peer-valid:h-1/2 group-focus-within:-translate-y-full peer-valid:-translate-y-full group-focus-within:pl-0 peer-valid:pl-0"
         >
           Password
         </label>
