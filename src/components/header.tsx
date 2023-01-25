@@ -4,10 +4,10 @@ import { MenuLogo, ThesisLogo } from "../static/icons";
 
 export const Header = () => {
   return (
-    <div className="bg-primary-transparent">
-      <div className="md:py-2 py-4 flex items-center justify-between container max-w-full">
+    <div className="sticky top-0 backdrop-filter backdrop-blur-sm bg-opacity-10">
+      <div className="md:py-2 py-4 flex items-center justify-between container mx-auto">
         <Link to="/" className="items-start h-full">
-          <ThesisLogo className="w-40 h-40" />
+          <ThesisLogo className="w-fit" />
         </Link>
 
         <div className="nav flex md:items-center md:justify-center justify-end px-4 md:px-0 gap-4 w-full">
