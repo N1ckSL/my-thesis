@@ -899,3 +899,83 @@ export const EducationSVG = ({ className }: { className?: string }) => {
     </svg>
   );
 };
+
+export const FilterSVG = ({ className }: { className?: string }) => {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 18 18"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <g clipPath="url(#clip0_9_147)">
+        <path
+          d="M15.75 3V4.5H15L11.25 10.125V16.5H6.75V10.125L3 4.5H2.25V3H15.75ZM4.803 4.5L8.25 9.6705V15H9.75V9.6705L13.197 4.5H4.803Z"
+          fill="#16161E"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_9_147">
+          <rect width="18" height="18" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+};
+
+export const ArrowDown = ({ className }: { className?: string }) => {
+  return (
+    <svg
+      width="41"
+      height="16"
+      viewBox="0 0 41 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M39.5972 0.69618C40.1955 0.69618 40.6805 1.10322 40.6805 1.60532C40.6805 2.02276 40.3453 2.3745 39.8884 2.48124L22.2524 15.3662C21.8611 15.6521 21.2832 15.665 20.8743 15.397L1.04277 2.397C0.976377 2.35348 0.917672 2.30475 0.866836 2.25205C0.668081 2.08723 0.544919 1.85835 0.544919 1.60532C0.544919 1.10322 1.02991 0.696181 1.62818 0.696181L39.5972 0.69618ZM4.74159 2.51446L21.5038 13.5024L36.5433 2.51446L4.74159 2.51446Z"
+        fill="black"
+      />
+    </svg>
+  );
+};
+
+export const PlusSVG = ({ className }: { className?: string }) => {
+  return (
+    <svg
+      width="50"
+      height="50"
+      viewBox="0 0 60 60"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M29.9997 58.8723C29.9997 59.4246 30.4474 59.8723 30.9997 59.8723C31.552 59.8723 31.9997 59.4246 31.9997 58.8723V33.0924H59.2866C59.8389 33.0924 60.2866 32.6447 60.2866 32.0924C60.2866 31.5401 59.8389 31.0924 59.2866 31.0924L31.9997 31.0924L31.9997 1C31.9997 0.447715 31.552 -5.74912e-07 30.9997 7.73788e-07C30.4474 -3.27231e-06 29.9997 0.447716 29.9997 0.999996L29.9997 31.0924L1.41431 31.0924C0.862025 31.0924 0.414308 31.5401 0.414309 32.0924C0.414309 32.6447 0.862025 33.0924 1.41431 33.0924L29.9997 33.0924L29.9997 58.8723Z"
+        fill="#6C63FF"
+      />
+    </svg>
+  );
+};
+
+export const DotSVG = ({ className }: { className?: string }) => {
+  return (
+    <svg
+      width="7"
+      height="7"
+      viewBox="0 0 7 7"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <circle cx="3.5" cy="3.5" r="3" fill="#0062FF" />
+    </svg>
+  );
+};
