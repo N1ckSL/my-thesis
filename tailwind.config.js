@@ -7,6 +7,7 @@ module.exports = {
       borderRadius: { none: "0", sm: "0.3rem" },
       boxShadow: {
         "3xl": "6px 24px 48px rgba(12, 15, 31, 0.2)",
+        filter: "inset -30px 0px 10px -15px rgba(12, 15, 31, 0.2)",
       },
       rotate: { 270: "270deg" },
       width: { "10xl": "1440px", "95/100": "95%" },
@@ -41,8 +42,8 @@ module.exports = {
           300: "#BED7D2",
           400: "#9EC1BC",
           500: "#86B2AB",
-          600: "#5D988F",
-          700: "#4F817A",
+          600: "#6C63FF",
+          700: "#4a45a8",
         },
         crablue: {
           50: "#F9FBFD",
@@ -79,14 +80,16 @@ module.exports = {
         main: "#0D0F1F",
         form: "#eaf1f3",
         attention: "#EFC42B",
+        filter: "#0B5FFF88",
         "primary-transparent": "#CDD3D9",
+        "filter-bg": "#D9D9D9",
       },
       backgroundPosition: {
         select: "right .8rem bottom 50%",
       },
       backgroundImage: {
         login: "url('/src/static/login.svg')",
-        listing: "url('/src/static/listing.png')",
+        listing: "url('/src/static/listing.svg')",
         "hero-footer": "url('/img/footer.png')",
         "main-gradient":
           "linear-gradient(180deg, #0C0F1F, #0C0F1F, #0C0F1F, #0C0F1F, #0C0F1F,#0C0F1F, #052141, #052141, #052141, #0C0F1F, #0C0F1F, #0C0F1F,  #0C0F1F,  #0C0F1F, #0C0F1F, #0C0F1F)",
