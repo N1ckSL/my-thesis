@@ -4,7 +4,7 @@
 
 @layer components {
 	body {
-		@apply text-base text-primary-800 bg-[#F8F9FA];
+		@apply text-base text-primary-800 bg-primary-transparent;
 		font-family: 'Untitled', sans-serif;
 	}
 
@@ -61,9 +61,12 @@
 	.btn-primary {
 		@apply bg-secondary-600 text-white transition-colors hover:bg-secondary-700;
 	}
+	.btn-filter {
+		@apply bg-black/40 text-white transition-colors hover:bg-filter;
+	}
 
 	.btn-primary-alt {
-		@apply text-secondary-600 transition-colors hover:bg-secondary-200 hover:text-secondary-700;
+		@apply text-secondary-600 bg-white transition-colors hover:bg-secondary-200 hover:text-secondary-700;
 	}
 
 	.btn-secondary {
