@@ -90,6 +90,7 @@ module.exports = {
       backgroundImage: {
         login: "url('/src/static/login.svg')",
         listing: "url('/src/static/listing.svg')",
+        thesis: "url('/src/static/thesisbg.svg')",
         "hero-footer": "url('/img/footer.png')",
         "main-gradient":
           "linear-gradient(180deg, #0C0F1F, #0C0F1F, #0C0F1F, #0C0F1F, #0C0F1F,#0C0F1F, #052141, #052141, #052141, #0C0F1F, #0C0F1F, #0C0F1F,  #0C0F1F,  #0C0F1F, #0C0F1F, #0C0F1F)",

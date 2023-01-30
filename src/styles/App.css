@@ -66,7 +66,7 @@
 	}
 
 	.btn-primary-alt {
-		@apply text-secondary-600 bg-white transition-colors hover:bg-secondary-200 hover:text-secondary-700;
+		@apply transition-colors border border-[#6C63FF] text-[#6C63FF] hover:bg-[#6C63FF] hover:text-white;
 	}
 
 	.btn-secondary {
