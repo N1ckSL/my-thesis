@@ -1,14 +1,65 @@
-import { Link } from "react-router-dom";
+import * as React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { ButtonWithProps } from "../components/UI/button/Button";
 import {
   EmailInputWithLabel,
   PasswordInputWithLabel,
 } from "../components/UI/Inputs";
 import { ThesisLogo } from "../static/icons";
-
+import { toast } from "react-toastify";
 import Typewriter from "typewriter-effect";
 
 function Login() {
+  const [formData, setFormData] = React.useState(initialFormData);
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [showFormError, setShowFormError] = React.useState(false);
+
+  const navigate = useNavigate();
+
+  function handleEmailChange(e: any) {
+    setEmail(e.target.value);
+    setFormData({ ...formData, email: e.target.value });
+  }
+
+  function handlePasswordChange(e: any) {
+    setPassword(e.target.value);
+    setFormData({ ...formData, password: e.target.value });
+  }
+
+  function handleLogin(e: any) {
+    e.preventDefault();
+    fetch("http://localhost:8000/login", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(formData),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((resp) => {
+        if (resp.user) {
+          localStorage.setItem(
+            "username",
+            resp.user.organization + " " + resp.user.role
+          );
+          localStorage.setItem("creator", resp.user.email);
+          navigate("/");
+        } else setShowFormError(true);
+      })
+      .catch((err) => {
+        console.log(err);
+
+        toast.error("Failed :" + err.message);
+      });
+  }
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setShowFormError(false);
+    }, 2500);
+  }, [showFormError]);
+
   return (
     <>
       <div className="container mx-auto md:flex items-center justify-center h-screen bg-[#FCFDFD]">
@@ -41,18 +92,36 @@ function Login() {
             <h1 className="w-full flex justify-center font-bold pt-24 mb-32 text-[#0D0D0D]">
               Welcome
             </h1>
-            <form action="post">
+            <form onSubmit={handleLogin}>
               <div className="container mx-auto">
                 <div className="container mx-auto boreder rounded-sm flex flex-col gap-8 items-center justify-center">
-                  <EmailInputWithLabel />
-                  <PasswordInputWithLabel />
+                  <EmailInputWithLabel
+                    name="username"
+                    value={email}
+                    onChange={handleEmailChange}
+                  />
+                  <PasswordInputWithLabel
+                    name="password"
+                    value={password}
+                    onChange={handlePasswordChange}
+                  />
+                </div>
+                <div className="flex justify-center items-center">
+                  {showFormError && (
+                    <div className="w-fit bg-red-400 rounded-sm text-white mt-4 px-4 py-2">
+                      Please check your credentials and try again
+                    </div>
+                  )}
                 </div>
                 <div className="flex justify-center w-full mt-10">
-                  <ButtonWithProps className="bg-[#6C63FF] text-white">
+                  <ButtonWithProps
+                    className="bg-[#6C63FF] text-white"
+                    type="submit"
+                  >
                     Login
                   </ButtonWithProps>
                 </div>
-                <p className="flex justify-center mt-4">
+                <p className="flex justify-center">
                   Don't have an account?{" "}
                   <span>
                     <Link to="/register" className="text-[#6C63FF] ml-2">
@@ -68,5 +137,10 @@ function Login() {
     </>
   );
 }
+
+const initialFormData = {
+  email: "",
+  password: "",
+};
 
 export { Login };

@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import * as React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { ButtonWithProps } from "../components/UI/button/Button";
 import {
   CustomRadioButton,
@@ -8,10 +9,56 @@ import {
 } from "../components/UI/Inputs";
 import { ThesisLogo } from "../static/icons";
 import Typewriter from "typewriter-effect";
+import { toast } from "react-toastify";
 
 function Register() {
-  function handleClick(e: any) {
-    console.log(e);
+  const [formData, setFormData] = React.useState(initialFormData);
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [organization, setOrganization] = React.useState("");
+  const [role, setRole] = React.useState("");
+
+  const navigate = useNavigate();
+
+  function handleEmailChange(e: any) {
+    setEmail(e.target.value);
+    setFormData({ ...formData, email: e.target.value });
+  }
+
+  function handlePasswordChange(e: any) {
+    setPassword(e.target.value);
+    setFormData({ ...formData, password: e.target.value });
+  }
+
+  function handleOrganizationChange(e: any) {
+    setOrganization(e.target.value);
+    setFormData({ ...formData, organization: e.target.value });
+  }
+
+  function handleRoleChange(e: any) {
+    setRole(e.currentTarget.value);
+    setFormData({ ...formData, role: e.currentTarget.value });
+  }
+
+  function handleSubmit(e: any) {
+    e.preventDefault();
+    console.log(formData);
+
+    fetch("http://localhost:8000/register/", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(formData),
+    })
+      .then((res) => {
+        navigate("/login");
+        return res.json();
+      })
+      .then((resp) => {
+        console.log(resp);
+      })
+      .catch((err) => {
+        toast.error("Failed :" + err.message);
+      });
   }
 
   return (
@@ -47,20 +94,53 @@ function Register() {
             <h1 className="w-full flex justify-center font-bold pt-24 mb-32 text-[#0D0D0D]">
               Register
             </h1>
-            <form action="post">
+            <form onSubmit={handleSubmit}>
               <div className="container mx-auto flex flex-col items-center">
                 <div className="container mx-auto boreder rounded-sm flex flex-col gap-8 items-center justify-center">
-                  <EmailInputWithLabel className="" />
-                  <PasswordInputWithLabel className="" />
-                  <OrganizationInputWithLabel className="" />
+                  <EmailInputWithLabel
+                    className=""
+                    name="username"
+                    value={email}
+                    onChange={handleEmailChange}
+                  />
+                  <PasswordInputWithLabel
+                    className=""
+                    name="password"
+                    value={password}
+                    onChange={handlePasswordChange}
+                  />
+                  <OrganizationInputWithLabel
+                    name="organization"
+                    value={organization}
+                    onChange={handleOrganizationChange}
+                  />
 
                   <div className="flex flex-wrap md:gap-12 gap-8">
-                    <CustomRadioButton>Student</CustomRadioButton>
-                    <CustomRadioButton>Professor</CustomRadioButton>
+                    <CustomRadioButton
+                      id="student"
+                      name="student"
+                      value="student"
+                      checked={role === "student"}
+                      onChange={handleRoleChange}
+                    >
+                      Student
+                    </CustomRadioButton>
+                    <CustomRadioButton
+                      id="professor"
+                      name="professor"
+                      value="professor"
+                      checked={role === "professor"}
+                      onChange={handleRoleChange}
+                    >
+                      Professor
+                    </CustomRadioButton>
                   </div>
                 </div>
                 <div className="flex justify-center w-full mt-10">
-                  <ButtonWithProps className="bg-[#6C63FF] text-white">
+                  <ButtonWithProps
+                    className="bg-[#6C63FF] text-white"
+                    type="submit"
+                  >
                     Register
                   </ButtonWithProps>
                 </div>
@@ -68,7 +148,6 @@ function Register() {
               <p className="flex items-center justify-center mt-2">
                 Already have an account?{" "}
                 <Link to="/login" className="text-[#6C63FF] ml-2">
-                  {" "}
                   Login
                 </Link>
               </p>
@@ -79,5 +158,12 @@ function Register() {
     </>
   );
 }
+
+const initialFormData = {
+  email: "",
+  password: "",
+  organization: "",
+  role: "",
+};
 
 export { Register };
