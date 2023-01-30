@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {
   EducationSVG,
   EmailSVG,
@@ -7,71 +7,125 @@ import {
   KeySVG,
 } from "../../static/icons";
 
-type BaseProps = React.DetailedHTMLProps<
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
-> & { children: React.ReactNode };
-
-export const EmailInput = ({ className }: { className?: string }) => {
+export const Input = ({
+  className,
+  placeholder,
+  id,
+  value,
+  onChange,
+}: {
+  className?: string;
+  placeholder?: string;
+  id?: string;
+  value?: string;
+  onChange?: (e: any) => void;
+}) => {
   return (
-    <>
-      <div
-        className={`relative text-black w-full focus-within:text-gray-400 shadow-lg focus-within:shadow-lg ${className}`}
+    <div className={`md:w-96 w-full relative group rounded-sm ${className}`}>
+      <input
+        type="text"
+        id={id}
+        required
+        value={value}
+        onChange={onChange}
+        className="w-full h-12 px-4 text-sm peer rounded-sm group-focus-within:border group-focus-within:border-[#6C63FF] bg-[#DBDBDB] outline-none"
+      />
+
+      <label
+        htmlFor={id}
+        className="transform transition-all absolute top-0 left-4 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:left-2 group-focus-within:top-0 peer-valid:text-xs peer-valid:left-2 group-focus-within:h-1/2 peer-valid:h-1/2 group-focus-within:-translate-y-full peer-valid:-translate-y-full group-focus-within:pl-0 peer-valid:pl-0"
       >
-        <span className="absolute inset-y-0 left-0 flex items-center pl-4">
-          <button
-            type="submit"
-            className="p-1 focus:outline-none focus:shadow-outline"
-          >
-            <EmailSVG className="w-8 h-8 pointer-events-none" />
-          </button>
-        </span>
-        <input
-          type="search"
-          className={`py-4 text-sm text-black bg-[#DBDBDB] rounded-md pl-20 pr-10 focus:outline-none focus:shadow placeholder-black w-full`}
-          placeholder="Email"
-        />
-      </div>
-    </>
+        {placeholder}
+      </label>
+    </div>
   );
 };
 
-export const EmailInputWithLabel = ({ className }: { className?: string }) => {
+export const TextArea = ({
+  className,
+  placeholder,
+  id,
+  value,
+  onChange,
+}: {
+  className?: string;
+  placeholder?: string;
+  id?: string;
+  value?: string;
+  onChange?: (e: any) => void;
+}) => {
   return (
-    <>
-      <div className={`md:w-96 w-64 relative group rounded-sm ${className}`}>
-        <span className="absolute instet-y-0 left-0 flex-items-center pl-4">
-          <EmailSVG className="flex items-center my-3 w-6 h-6" />
-        </span>
-        <input
-          type="email"
-          id="email"
-          required
-          className="w-full h-12 px-4 pl-16 text-sm peer group-focus-within:border group-focus-within:border-[#6C63FF] rounded-sm bg-[#DBDBDB] outline-none"
-        />
+    <div
+      className={`w-full relative group rounded-sm ${
+        className ? className : ""
+      }`}
+    >
+      <textarea
+        id={id}
+        required
+        value={value}
+        onChange={onChange}
+        className="resize-none w-full h-32 px-4 py-2 peer rounded-sm group-focus-within:border group-focus-within:border-[#6C63FF] bg-[#DBDBDB] outline-none"
+      />
 
-        <label
-          htmlFor="email"
-          className="transform transition-all absolute top-0 left-14 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:left-0 group-focus-within:top-0 peer-valid:text-xs peer-valid:left-0 group-focus-within:h-1/2 peer-valid:h-1/2 group-focus-within:-translate-y-full peer-valid:-translate-y-full group-focus-within:pl-0 peer-valid:pl-0"
-        >
-          Email
-        </label>
-      </div>
-    </>
+      <label
+        htmlFor={id}
+        className="transform transition-all absolute -top-12 left-4 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:left-2 group-focus-within:top-6 peer-valid:text-xs peer-valid:left-2 group-focus-within:h-1/2 peer-valid:h-1/2 group-focus-within:-translate-y-full peer-valid:-translate-y-full group-focus-within:pl-0 peer-valid:pl-0"
+      >
+        {placeholder}
+      </label>
+    </div>
+  );
+};
+
+export const EmailInputWithLabel = ({
+  value,
+  className,
+  name,
+  onChange,
+}: {
+  value: string;
+  className?: string;
+  name?: string;
+  onChange?: (e: any) => void;
+}) => {
+  return (
+    <div className={`md:w-96 w-64 relative group rounded-sm ${className}`}>
+      <span className="absolute instet-y-0 left-0 flex-items-center pl-4">
+        <EmailSVG className="flex items-center my-3 w-6 h-6" />
+      </span>
+      <input
+        type="text"
+        id="email"
+        name={name}
+        value={value}
+        required
+        onChange={onChange}
+        className="w-full h-12 px-4 pl-16 text-sm peer rounded-sm group-focus-within:border group-focus-within:border-[#6C63FF] bg-[#DBDBDB] outline-none"
+      />
+
+      <label
+        htmlFor="email"
+        className="transform transition-all absolute top-0 left-14 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:left-0 group-focus-within:top-0 peer-valid:text-xs peer-valid:left-0 group-focus-within:h-1/2 peer-valid:h-1/2 group-focus-within:-translate-y-full peer-valid:-translate-y-full group-focus-within:pl-0 peer-valid:pl-0"
+      >
+        Email
+      </label>
+    </div>
   );
 };
 
 export const PasswordInputWithLabel = ({
+  value,
   className,
+  name,
+  onChange,
 }: {
+  value: string;
   className?: string;
+  name?: string;
+  onChange?: (e: any) => void;
 }) => {
   const [passwordType, setPasswordType] = React.useState("password");
-  const [passwordInput, setPasswordInput] = React.useState("");
-
-  const handlePasswordChange = (e: any) => {
-    setPasswordInput(e.target.value);
-  };
 
   const togglePassword = () => {
     if (passwordType === "password") {
@@ -90,9 +144,10 @@ export const PasswordInputWithLabel = ({
         <input
           type={passwordType}
           id="password"
+          name={name}
           required
-          value={passwordInput}
-          onChange={handlePasswordChange}
+          value={value}
+          onChange={onChange}
           className="w-full h-12 px-4 pl-16 text-sm peer rounded-sm group-focus-within:border group-focus-within:border-[#6C63FF] bg-[#DBDBDB] outline-none"
         />
 
@@ -118,9 +173,15 @@ export const PasswordInputWithLabel = ({
 };
 
 export const OrganizationInputWithLabel = ({
+  value,
   className,
+  name,
+  onChange,
 }: {
+  value: string;
   className?: string;
+  name?: string;
+  onChange?: (e: any) => void;
 }) => {
   return (
     <div className={`md:w-96 w-64 relative group rounded-sm ${className}`}>
@@ -130,7 +191,10 @@ export const OrganizationInputWithLabel = ({
       <input
         type="text"
         id="organization"
+        name={name}
+        value={value}
         required
+        onChange={onChange}
         className="w-full h-12 px-4 pl-16 text-sm peer rounded-sm group-focus-within:border group-focus-within:border-[#6C63FF] bg-[#DBDBDB] outline-none"
       />
 
@@ -145,15 +209,30 @@ export const OrganizationInputWithLabel = ({
   );
 };
 
-export const CustomRadioButton = ({ children, ...props }: BaseProps) => {
+export const CustomRadioButton = ({
+  children,
+  name,
+  value,
+  id,
+  checked,
+  onChange,
+}: {
+  children: React.ReactNode;
+  name?: string;
+  id?: string;
+  value?: string;
+  checked?: boolean;
+  onChange?: (e: any) => void;
+}) => {
   return (
     <div className="flex flex-col items-center">
       <input
-        checked
-        id="radio"
         type="radio"
-        value={children?.toString()}
-        name="colored-radio"
+        name={name}
+        id={id}
+        checked={checked}
+        value={value}
+        onChange={onChange}
         className="w-10 h-10 text-purple-600 bg-gray-100 border-gray-300 hover:accent-[#6C63FF] accent-[#6C63FF] focus:outline-none focus-visible:ring focus:border-[#6C63FF]"
       />
       <label
