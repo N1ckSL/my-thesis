@@ -1,10 +1,18 @@
 import * as React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { MenuLogo, ThesisLogo } from "../static/icons";
 
 export const Header = () => {
+  const user = localStorage.getItem("username");
+  const redirect = useNavigate();
+
+  function handleLogoutClick() {
+    localStorage.clear();
+    redirect("/");
+  }
+
   return (
-    <div className="sticky top-0 backdrop-filter backdrop-blur-sm bg-opacity-10">
+    <div className="sticky top-0 z-50 backdrop-filter backdrop-blur-sm bg-opacity-10">
       <div className="md:py-2 py-4 flex items-center justify-between container mx-auto">
         <Link to="/" className="items-start h-full">
           <ThesisLogo className="w-fit" />
@@ -53,6 +61,22 @@ export const Header = () => {
             </div>
           </div>
         </div>
+        <div className="hidden md:block flex flex-col justify-between items-center gap-2">
+          {user ? (
+            <>
+              <button
+                className="btn btn-primary-alt"
+                onClick={handleLogoutClick}
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <Link to="/login" className="btn btn-primary-alt">
+              Login
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -64,13 +88,6 @@ function MenuMobile() {
 
   function handleMenuClick() {
     setShowMenuLogo(true);
-    return (
-      <ul className="z-50 absolute right-100 bg-gray-400">
-        <li>Home</li>
-        <li>Account</li>
-        <li>Licence</li>
-      </ul>
-    );
   }
 
   React.useEffect(() => {
