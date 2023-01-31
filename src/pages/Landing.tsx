@@ -13,6 +13,7 @@ interface ThesisProps {
   shortDescription: string;
   fullDescription: string;
   id: number;
+  randomBackground: string;
 }
 
 function Landing() {
@@ -24,8 +25,6 @@ function Landing() {
       .then((res) => res.json())
       .then((data) => setThesisCards(data));
   }, []);
-
-  console.log(thesisCards);
 
   return (
     <>
@@ -53,6 +52,7 @@ function Landing() {
                     shortDescription={data.shortDescription}
                     id={data.id}
                     key={data.id}
+                    randomBackground={getRandomBackground()}
                   />
                 ))}
 
@@ -70,5 +70,32 @@ function Landing() {
     </>
   );
 }
+
+function getRandomBackground(): string {
+  const randomIndex = Math.floor(Math.random() * backgrounds.length);
+  return backgrounds[randomIndex];
+}
+
+const backgrounds = [
+  "#f44336",
+  "#e91e63",
+  "#9c27b0",
+  "#673ab7",
+  "#3f51b5",
+  "#2196f3",
+  "#03a9f4",
+  "#00bcd4",
+  "#009688",
+  "#4caf50",
+  "#8bc34a",
+  "#cddc39",
+  "#ffeb3b",
+  "#ffc107",
+  "#ff9800",
+  "#ff5722",
+  "#795548",
+  "#9e9e9e",
+  "#607d8b",
+];
 
 export { Landing };

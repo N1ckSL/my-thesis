@@ -2,6 +2,7 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 
 import { ArrowDown, PlusSVG } from "../../static/icons";
+import { getInitials } from "../Utils/Utils";
 
 function ThesisCard({
   title,
@@ -11,9 +12,11 @@ function ThesisCard({
   shortDescription,
   fullDescription,
   id,
+  randomBackground,
 }: {
   title: string;
   author: string;
+  randomBackground: string;
   shortDescription: string;
   coordinator?: string;
   category?: string;
@@ -28,8 +31,13 @@ function ThesisCard({
         <div className="md:flex w-full">
           <div className="md:w-1/2 w-full">
             <div className="flex gap-2 justify-start">
-              <div className="rounded-md border-2 border-black aspect-square bg-[#9cabc260] w-20 h-20">
-                <img src="" alt="" />
+              <div
+                className={`rounded-md border-2 border-black aspect-square bg-[${randomBackground}] w-20 h-20`}
+                style={{ backgroundColor: randomBackground }}
+              >
+                <div className="flex items-center justify-center h-full text-sm text-black">
+                  {category && getInitials(category)}
+                </div>
               </div>
               <div className="flex flex-col">
                 <p className="font-bold">{title}</p>
