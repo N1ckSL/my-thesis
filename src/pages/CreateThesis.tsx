@@ -51,7 +51,6 @@ function CreateThesis() {
 
   function handleFormSubmit(e: any) {
     e.preventDefault();
-    console.log(formData);
 
     fetch("http://localhost:8000/thesis/", {
       method: "POST",

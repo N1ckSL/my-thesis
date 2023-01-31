@@ -42,7 +42,6 @@ function Register() {
 
   function handleSubmit(e: any) {
     e.preventDefault();
-    console.log(formData);
 
     fetch("http://localhost:8000/register/", {
       method: "POST",
