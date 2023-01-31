@@ -12,12 +12,14 @@ export const Input = ({
   placeholder,
   id,
   value,
+  required,
   onChange,
 }: {
   className?: string;
   placeholder?: string;
   id?: string;
   value?: string;
+  required: boolean;
   onChange?: (e: any) => void;
 }) => {
   return (
@@ -25,7 +27,7 @@ export const Input = ({
       <input
         type="text"
         id={id}
-        required
+        required={required}
         value={value}
         onChange={onChange}
         className="w-full h-12 px-4 text-sm peer rounded-sm group-focus-within:border group-focus-within:border-[#6C63FF] bg-[#DBDBDB] outline-none"
@@ -54,6 +56,8 @@ export const TextArea = ({
   value?: string;
   onChange?: (e: any) => void;
 }) => {
+  const hasContent = value?.trim()?.length === 0;
+
   return (
     <div
       className={`w-full relative group rounded-sm ${
@@ -70,7 +74,9 @@ export const TextArea = ({
 
       <label
         htmlFor={id}
-        className="transform transition-all absolute -top-12 left-4 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:left-2 group-focus-within:top-6 peer-valid:text-xs peer-valid:left-2 group-focus-within:h-1/2 peer-valid:h-1/2 group-focus-within:-translate-y-full peer-valid:-translate-y-full group-focus-within:pl-0 peer-valid:pl-0"
+        className={`transform transition-all absolute ${
+          hasContent ? "-top-12" : "top-6"
+        }  left-4 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:left-2 group-focus-within:top-6 peer-valid:text-xs peer-valid:left-2 group-focus-within:h-1/2 peer-valid:h-1/2 group-focus-within:-translate-y-full peer-valid:-translate-y-full group-focus-within:pl-0 peer-valid:pl-0`}
       >
         {placeholder}
       </label>
