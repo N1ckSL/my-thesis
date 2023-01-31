@@ -121,7 +121,7 @@ function Login() {
                     Login
                   </ButtonWithProps>
                 </div>
-                <p className="flex justify-center">
+                <p className="flex justify-center mt-2">
                   Don't have an account?{" "}
                   <span>
                     <Link to="/register" className="text-[#6C63FF] ml-2">
