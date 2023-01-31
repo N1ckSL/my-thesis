@@ -24,6 +24,8 @@ function ThesisCard({
   id?: number;
 }) {
   const [rotateArrow, setRotateArrow] = React.useState(false);
+  const user = localStorage.getItem("username");
+  const isProfessor = user?.includes("professor");
 
   return (
     <div className="flex items-center md:px-4 mt-8">
@@ -31,21 +33,33 @@ function ThesisCard({
         <div className="md:flex w-full">
           <div className="md:w-1/2 w-full">
             <div className="flex gap-2 justify-start">
-              <div
+              <Link
+                to={`/thesis/${id}`}
                 className={`rounded-md border-2 border-black aspect-square bg-[${randomBackground}] w-20 h-20`}
                 style={{ backgroundColor: randomBackground }}
               >
                 <div className="flex items-center justify-center h-full text-sm text-black">
                   {category && getInitials(category)}
                 </div>
-              </div>
+              </Link>
               <div className="flex flex-col">
-                <p className="font-bold">{title}</p>
+                <Link
+                  to={`/thesis/${id}`}
+                  className="font-bold text-lg mb-1 leading-none tracking-tighter w-fit"
+                >
+                  {title}
+                </Link>
                 <p>
-                  <span className="font-bold"> Author: </span> {author}
+                  <span className="font-bold mb-1 leading-none tracking-tighter">
+                    Author:{" "}
+                  </span>
+                  {author}
                 </p>
                 <p>
-                  <span className="font-bold"> Category: </span> {category}
+                  <span className="font-bold mb-1 leading-none tracking-tighter">
+                    Category:{" "}
+                  </span>
+                  {category}
                 </p>
               </div>
             </div>
@@ -70,9 +84,11 @@ function ThesisCard({
           {shortDescription}
         </p>
       </div>
-      <Link to={`/thesis/${id}`} className="flex w-1/5 justify-center">
-        <PlusSVG className="rounded-md p-4 cursor-pointer shadow-sm bg-white hover:shadow-md" />
-      </Link>
+      {isProfessor && (
+        <Link to={`/thesis/${id}`} className="flex w-1/5 justify-center">
+          <PlusSVG className="rounded-md p-4 cursor-pointer shadow-sm bg-white hover:shadow-md" />
+        </Link>
+      )}
     </div>
   );
 }
