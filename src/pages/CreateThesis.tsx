@@ -96,28 +96,37 @@ function CreateThesis() {
                   <Input
                     placeholder="Title"
                     id="title"
+                    required
                     value={title}
                     onChange={handleTitleChange}
                   />
                   <Input
                     placeholder="Author"
                     id="author"
+                    required
                     value={author}
                     onChange={handleAuthorChange}
+                  />
+
+                  <Input
+                    placeholder="Category"
+                    id="category"
+                    required
+                    value={category}
+                    onChange={handleCategoryChange}
                   />
                   <Input
                     placeholder="Coordinator"
                     id="coordinator"
+                    required={false}
                     value={coordinator}
                     onChange={handleCoordinatorChange}
                   />
-                  <Input
-                    placeholder="Category"
-                    id="category"
-                    value={category}
-                    onChange={handleCategoryChange}
-                  />
                 </div>
+                <p className="text-sm flex justify-start md:justify-end -translate-y-8">
+                  <span className="text-red-500 px-1">*</span> Leave empty if
+                  you don't have a coordinator yet
+                </p>
                 <TextArea
                   placeholder="Short Description"
                   value={shortDescription}
