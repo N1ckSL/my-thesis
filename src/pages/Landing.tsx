@@ -18,6 +18,7 @@ interface ThesisProps {
 
 function Landing() {
   const user = localStorage.getItem("username");
+  const isProfessor = user?.includes("professor");
   const [thesisCards, setThesisCards] = React.useState<ThesisProps[]>([]);
 
   React.useEffect(() => {
@@ -29,12 +30,12 @@ function Landing() {
   return (
     <>
       <Header />
-      <div className="h-screen">
-        <div className="bg-listing bg-center bg-no-repeat bg-contain h-full">
+      <div className="h-full">
+        <div className="bg-listing bg-center bg-no-repeat bg-contain">
           <div className="container mx-auto">
             <div className="container">
               <div className="flex justify-end md:px-10 md:my-4 mt-10 md:mt-0">
-                {user && (
+                {user && !isProfessor && (
                   <Link to="/create" className="btn btn-small btn-primary">
                     <PlusSVG className="w-4 h-4 children:fill-white" /> Create
                     Thesis
