@@ -6,6 +6,7 @@ import {
   EmailInputWithLabel,
   OrganizationInputWithLabel,
   PasswordInputWithLabel,
+  UserInputWithLabel,
 } from "../components/UI/Inputs";
 import { ThesisLogo } from "../static/icons";
 import Typewriter from "typewriter-effect";
@@ -13,6 +14,7 @@ import { toast } from "react-toastify";
 
 function Register() {
   const [formData, setFormData] = React.useState(initialFormData);
+  const [fullName, setFullName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [organization, setOrganization] = React.useState("");
@@ -20,6 +22,10 @@ function Register() {
 
   const navigate = useNavigate();
 
+  function handleNameChange(e: any) {
+    setFullName(e.target.value);
+    setFormData({ ...formData, name: e.target.value });
+  }
   function handleEmailChange(e: any) {
     setEmail(e.target.value);
     setFormData({ ...formData, email: e.target.value });
@@ -96,9 +102,15 @@ function Register() {
             <form onSubmit={handleSubmit}>
               <div className="container mx-auto flex flex-col items-center">
                 <div className="container mx-auto boreder rounded-sm flex flex-col gap-8 items-center justify-center">
-                  <EmailInputWithLabel
+                  <UserInputWithLabel
                     className=""
                     name="username"
+                    value={fullName}
+                    onChange={handleNameChange}
+                  />
+                  <EmailInputWithLabel
+                    className=""
+                    name="email"
                     value={email}
                     onChange={handleEmailChange}
                   />
@@ -159,6 +171,7 @@ function Register() {
 }
 
 const initialFormData = {
+  name: "",
   email: "",
   password: "",
   organization: "",

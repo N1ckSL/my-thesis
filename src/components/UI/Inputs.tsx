@@ -5,6 +5,7 @@ import {
   EyeSlashSVG,
   EyeSVG,
   KeySVG,
+  UserSVG,
 } from "../../static/icons";
 
 export const Input = ({
@@ -79,6 +80,42 @@ export const TextArea = ({
         }  left-4 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:left-2 group-focus-within:top-6 peer-valid:text-xs peer-valid:left-2 group-focus-within:h-1/2 peer-valid:h-1/2 group-focus-within:-translate-y-full peer-valid:-translate-y-full group-focus-within:pl-0 peer-valid:pl-0`}
       >
         {placeholder}
+      </label>
+    </div>
+  );
+};
+
+export const UserInputWithLabel = ({
+  value,
+  className,
+  name,
+  onChange,
+}: {
+  value: string;
+  className?: string;
+  name?: string;
+  onChange?: (e: any) => void;
+}) => {
+  return (
+    <div className={`md:w-96 w-64 relative group rounded-sm ${className}`}>
+      <span className="absolute instet-y-0 left-0 flex-items-center pl-4">
+        <UserSVG className="flex items-center my-3 w-6 h-6" />
+      </span>
+      <input
+        type="text"
+        id="name"
+        name={name}
+        value={value}
+        required
+        onChange={onChange}
+        className="w-full h-12 px-4 pl-16 text-sm peer rounded-sm group-focus-within:border group-focus-within:border-[#6C63FF] bg-[#DBDBDB] outline-none"
+      />
+
+      <label
+        htmlFor="name"
+        className="transform transition-all absolute top-0 left-14 h-full flex items-center text-sm group-focus-within:text-xs group-focus-within:left-0 group-focus-within:top-0 peer-valid:text-xs peer-valid:left-0 group-focus-within:h-1/2 peer-valid:h-1/2 group-focus-within:-translate-y-full peer-valid:-translate-y-full group-focus-within:pl-0 peer-valid:pl-0"
+      >
+        Full Name
       </label>
     </div>
   );
