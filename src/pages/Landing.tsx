@@ -50,6 +50,7 @@ function Landing() {
                     title={data.title}
                     author={data.author}
                     category={data.category}
+                    coordinator={data.coordinator}
                     shortDescription={data.shortDescription}
                     id={data.id}
                     key={data.id}

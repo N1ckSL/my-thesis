@@ -39,11 +39,8 @@ function Login() {
       })
       .then((resp) => {
         if (resp.user) {
-          localStorage.setItem(
-            "username",
-            resp.user.organization + " " + resp.user.role
-          );
-          localStorage.setItem("creator", resp.user.email);
+          localStorage.setItem("username", resp.user.name);
+          localStorage.setItem("organization", resp.user.organization);
           navigate("/");
         } else setShowFormError(true);
       })

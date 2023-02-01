@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useParams } from "react-router-dom";
 import { Header } from "../components/Header";
-import { Loader } from "../components/UI/Loader";
 
 interface Thesis {
   title: string;
@@ -28,14 +27,6 @@ function ThesisPage() {
     };
     fetchData();
   }, [id]);
-
-  if (!thesisData) {
-    return (
-      <div>
-        <Loader />
-      </div>
-    );
-  }
 
   return (
     <>

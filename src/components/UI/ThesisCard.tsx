@@ -27,6 +27,23 @@ function ThesisCard({
   const user = localStorage.getItem("username");
   const isProfessor = user?.includes("professor");
 
+  function handleAssignClick() {
+    if (!coordinator) {
+      const updatedThesis = {
+        ...ThesisCard,
+        coordinator: user,
+      };
+
+      fetch(`http://localhost:8000/thesis/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedThesis),
+      });
+    }
+  }
+
   return (
     <div className="flex items-center md:px-4 mt-8">
       <div className="transition-all rounded-lg border-2 border-black bg-[#DBDBDB] p-4 w-full">
@@ -85,9 +102,13 @@ function ThesisCard({
         </p>
       </div>
       {isProfessor && (
-        <Link to={`/thesis/${id}`} className="flex w-1/5 justify-center">
-          <PlusSVG className="rounded-md p-4 cursor-pointer shadow-sm bg-white hover:shadow-md" />
-        </Link>
+        <div className="flex w-1/5 justify-center" onClick={handleAssignClick}>
+          <PlusSVG
+            className={`rounded-md p-4 cursor-pointer shadow-sm bg-white hover:shadow-md ${
+              !coordinator?.length ? "hover:bg-green-200" : "hover:bg-red-100"
+            }`}
+          />
+        </div>
       )}
     </div>
   );
