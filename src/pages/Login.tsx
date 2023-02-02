@@ -41,6 +41,7 @@ function Login() {
         if (resp.user) {
           localStorage.setItem("username", resp.user.name);
           localStorage.setItem("organization", resp.user.organization);
+          localStorage.setItem("user-id", resp.user.id);
           navigate("/");
         } else setShowFormError(true);
       })
