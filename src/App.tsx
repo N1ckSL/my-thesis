@@ -4,7 +4,7 @@ import { Link, Route, Routes } from "react-router-dom";
 
 import { Landing } from "./pages/Landing";
 import { Account } from "./pages/Account";
-import { Licence } from "./pages/License";
+import { About } from "./pages/About";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { CreateThesis } from "./pages/CreateThesis";
@@ -17,7 +17,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Landing />} />
       <Route path="/account" element={<Account />} />
-      <Route path="/licence" element={<Licence />} />
+      <Route path="/about" element={<About />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/create" element={<CreateThesis />} />

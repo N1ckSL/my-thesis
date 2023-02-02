@@ -89,6 +89,8 @@ module.exports = {
       },
       backgroundImage: {
         login: "url('/src/static/login.svg')",
+        about: "url('/src/static/aboutbg.svg')",
+        account: "url('/src/static/accountbg.svg')",
         listing: "url('/src/static/listing.svg')",
         thesis: "url('/src/static/thesisbg.svg')",
         "hero-footer": "url('/img/footer.png')",
