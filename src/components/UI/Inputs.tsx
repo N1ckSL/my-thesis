@@ -12,24 +12,29 @@ export const Input = ({
   className,
   placeholder,
   id,
+  type = "text",
   value,
+  defaultValue,
   required,
   onChange,
 }: {
   className?: string;
   placeholder?: string;
   id?: string;
+  type?: string;
   value?: string;
+  defaultValue?: string;
   required: boolean;
   onChange?: (e: any) => void;
 }) => {
   return (
     <div className={`md:w-96 w-full relative group rounded-sm ${className}`}>
       <input
-        type="text"
+        type={type}
         id={id}
         required={required}
         value={value}
+        defaultValue={defaultValue}
         onChange={onChange}
         className="w-full h-12 px-4 text-sm peer rounded-sm group-focus-within:border group-focus-within:border-[#6C63FF] bg-[#DBDBDB] outline-none"
       />

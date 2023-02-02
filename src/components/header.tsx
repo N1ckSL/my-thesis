@@ -18,7 +18,7 @@ export const Header = () => {
           <ThesisLogo className="w-fit" />
         </Link>
 
-        <div className="nav flex md:items-center md:justify-center justify-end px-4 md:px-0 gap-4 w-full">
+        <div className="nav flex md:items-center md:justify-center justify-end md:px-4 md:px-0 gap-4 w-full translate-x-2">
           <div className="relative h-full">
             <div className="desktop hidden md:block">
               <ul
@@ -36,24 +36,26 @@ export const Header = () => {
                 </li>
                 <li>
                   <NavLink
-                    to="/licence"
+                    to="/about"
                     className={({ isActive }) =>
                       isActive ? "text-secondary-600" : "text-primary-800"
                     }
                   >
-                    Licence
+                    About
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink
-                    to="/account"
-                    className={({ isActive }) =>
-                      isActive ? "text-secondary-600" : "text-primary-800"
-                    }
-                  >
-                    Account
-                  </NavLink>
-                </li>
+                {user ? (
+                  <li>
+                    <NavLink
+                      to="/account"
+                      className={({ isActive }) =>
+                        isActive ? "text-secondary-600" : "text-primary-800"
+                      }
+                    >
+                      Account
+                    </NavLink>
+                  </li>
+                ) : null}
               </ul>
             </div>
             <div className="mobile block md:hidden">
@@ -85,6 +87,13 @@ export const Header = () => {
 function MenuMobile() {
   const headerRef = React.useRef<HTMLDivElement>(null);
   const [showMenuLogo, setShowMenuLogo] = React.useState(false);
+  const user = localStorage.getItem("username");
+  const redirect = useNavigate();
+
+  function handleLogoutClick() {
+    localStorage.clear();
+    redirect("/");
+  }
 
   function handleMenuClick() {
     setShowMenuLogo(true);
@@ -116,40 +125,56 @@ function MenuMobile() {
       ref={headerRef}
     >
       {showMenuLogo ? (
-        <ul
-          className={`md:flex md:gap-12 animate-menu-mobile-in gap-2 children:py-1 md:children:py-0`}
-        >
-          <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive ? "text-secondary-600" : "text-primary-800"
-              }
-            >
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/licence"
-              className={({ isActive }) =>
-                isActive ? "text-secondary-600" : "text-primary-800"
-              }
-            >
-              Licence
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/account"
-              className={({ isActive }) =>
-                isActive ? "text-secondary-600" : "text-primary-800"
-              }
-            >
-              Account
-            </NavLink>
-          </li>
-        </ul>
+        <div className="border border-secondary-600 border-r-0 rounded-r-none animate-menu-mobile-in rounded-sm ">
+          <ul
+            className={`md:flex md:gap-12 animate-menu-mobile-in gap-2 children:py-1 md:children:py-0 children:px-4 flex flex-col items-center`}
+          >
+            <li>
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive ? "text-secondary-600" : "text-primary-800"
+                }
+              >
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  isActive ? "text-secondary-600" : "text-primary-800"
+                }
+              >
+                About
+              </NavLink>
+            </li>
+            {user ? (
+              <>
+                <li>
+                  <NavLink
+                    to="/account"
+                    className={({ isActive }) =>
+                      isActive ? "text-secondary-600" : "text-primary-800"
+                    }
+                  >
+                    Account
+                  </NavLink>
+                </li>
+                <li>
+                  <button
+                    className="btn btn-primary-alt"
+                    onClick={handleLogoutClick}
+                  >
+                    Logout
+                  </button>
+                </li>
+              </>
+            ) : (
+              <Link to="/login">Login</Link>
+            )}
+          </ul>
+        </div>
       ) : (
         <MenuLogo className={`md:hidden block w-10 h-10 cursor-pointer`} />
       )}
